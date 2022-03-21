@@ -45,4 +45,37 @@ public class ReverseLinkedList {
 
         return pre;
     }
+
+    /**
+     * 删掉链表中所有值为value的节点
+     * @param head
+     * @param value
+     * @return
+     */
+    public static Node removeValue(Node head, int value) {
+        //head的值可能为value,先找到从头部开始第一个不为3的节点
+        while (head != null) {
+            if (head.value != value) {
+                break;
+            }
+
+            head = head.next;
+        }
+
+        //head 来到第一个不需要删的位置
+        Node pre = head;
+        Node cur = head;
+
+        while (cur != null) {
+            if (cur.value == value) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+
+            cur = cur.next;
+        }
+
+        return head;
+    }
 }
